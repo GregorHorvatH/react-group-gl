@@ -3,36 +3,32 @@
   height: 100vh;
   font-family: Arial, Helvetica, sans-serif;
 
-  .menu {
+  .navigation {
+    display: flex;
+    flex-direction: column;
     border-right: 1px solid black;
     list-style: none;
     margin: 0;
     padding: 10px;
     width: 200px;
 
-    li {
+    .link {
+      text-decoration: none;
       padding: 10px;
-
-      a {
-        text-decoration: none;
-        color: #000;
-      }
+      color: #000;
     }
 
-    li:hover {
+    .link:hover {
       background-color: #e0dff2;
     }
 
-    li:hover.active {
+    .active-link {
       background-color: #2f2e73;
+      color: white;
     }
 
-    .active {
-      background-color: #4947b3;
-
-      a {
-        color: white;
-      }
+    .active-link:hover {
+      background-color: #151433;
     }
   }
 
