@@ -1,0 +1,106 @@
+.app {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+
+  h3 {
+    color: #943851;
+  }
+  h4 {
+    color: #d7816a;
+  }
+
+  .button {
+    background-color: #3f6578;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    height: 35px;
+  }
+
+  .button:hover {
+    background-color: #324e5c;
+  }
+  .button:active {
+    background-color: #263c47;
+  }
+
+  .navbar {
+    display: flex;
+    border-bottom: 1px solid #3f6578;
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+
+    .navigation {
+      flex: 1;
+      display: flex;
+      align-items: flex-end;
+
+      .link {
+        padding: 10px;
+        text-decoration: none;
+        color: #3f6578;
+      }
+
+      .active {
+        background-color: #3f6578;
+        color: #fff;
+      }
+    }
+
+    .authorization {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      align-items: center;
+
+      .avatar {
+        width: 50px;
+        border: 1px solid #ddedaa;
+        border-radius: 50%;
+      }
+      .user-name {
+        margin: 0 10px;
+        font-weight: 100;
+      }
+    }
+  }
+
+  .movies {
+    .movie-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      .movie-item {
+        display: flex;
+        margin-bottom: 10px;
+
+        .title {
+          margin-top: 0;
+        }
+
+        .poster {
+          height: 150px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  .my-component {
+    border: 1px dashed #3f6578;
+    margin-bottom: 10px;
+    padding: 10px;
+
+    h4 {
+      margin-top: 0;
+    }
+
+    .extra-props {
+      background-color: #ddedaa;
+      color: #d7816a;
+    }
+  }
+}
