@@ -3,9 +3,12 @@
   flex-direction: column;
   border-top: 1px solid black;
   margin-bottom: 20px;
+  width: 300px;
 
   .controls {
     display: flex;
+    margin-bottom: 10px;
+    justify-content: center;
 
     .button {
       width: 50px;
@@ -19,5 +22,8 @@
       margin: 0;
       font-size: 2em;
     }
+  }
+
+  .step {
   }
 }
