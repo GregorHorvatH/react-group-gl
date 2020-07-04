@@ -4,12 +4,14 @@ import Filters from './Filters';
 import TodoList from './TodoList';
 import './styles.scss';
 
+const getColor = () => ['#DDD1C7', '#C2CFB2', '#8DB580'][~~(Math.random() * 3)];
+
 const Todos = () => {
   const [filter, setFilter] = useState('desc');
   const [todos, setTodos] = useState([
-    { id: 1, text: 'todo 1' },
-    { id: 2, text: 'todo 2' },
-    { id: 3, text: 'todo 3' },
+    { id: 1, text: 'todo 1', color: '#DDD1C7' },
+    { id: 2, text: 'todo 2', color: '#C2CFB2' },
+    { id: 3, text: 'todo 3', color: '#8DB580' },
   ]);
 
   const addTodo = (text) => {
@@ -17,6 +19,7 @@ const Todos = () => {
       ...todos,
       {
         id: Date.now(),
+        color: getColor(),
         text,
       },
     ]);
@@ -31,7 +34,7 @@ const Todos = () => {
 
   return (
     <div className="todos">
-      <h2>Todos</h2>
+      <h2 className="title">Todos</h2>
       <InputForm onSubmit={addTodo} />
       <Filters value={filter} onAsc={setSortAsc} onDesc={setSortDesc} />
       <TodoList filter={filter} todos={todos} onDelete={deleteTodo} />

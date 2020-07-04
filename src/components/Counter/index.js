@@ -13,7 +13,7 @@ const Counter = () => {
 
   return (
     <div className="counter">
-      <h2>Counter</h2>
+      <h2 className="title">Counter</h2>
       <div className="controls">
         <button className="button" onClick={onDecrement}>
           -
