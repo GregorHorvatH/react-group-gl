@@ -3,16 +3,16 @@ import types from './counterTypes';
 
 const initialState = {
   value: 0,
-  step: 10,
+  step: 1,
 };
 
 const valueReducer = (state = initialState.value, { type, payload }) => {
   switch (type) {
     case types.INCREMENT:
-      return state + payload.value;
+      return state + payload.step;
 
     case types.DECREMENT:
-      return state - payload.value;
+      return state - payload.step;
 
     default:
       return state;
@@ -22,16 +22,16 @@ const valueReducer = (state = initialState.value, { type, payload }) => {
 const stepReducer = (state = initialState.step, { type, payload }) => {
   switch (type) {
     case types.SET_STEP:
-      return payload.value;
+      return payload.step;
 
     default:
       return state;
   }
 };
 
-const reducer = combineReducers({
+const counterReducer = combineReducers({
   value: valueReducer,
   step: stepReducer,
 });
 
-export default reducer;
+export default counterReducer;

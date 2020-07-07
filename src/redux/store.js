@@ -1,6 +1,5 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { createLogger } from 'redux-logger';
+import { createStore, combineReducers } from 'redux';
+
 import counterReducer from './counterReducer';
 import todosReducer from './todosReducer';
 
@@ -9,20 +8,9 @@ const rootReducer = combineReducers({
   todos: todosReducer,
 });
 
-const middlewares = [];
-
-if (process.env.NODE_ENV !== 'production') {
-  middlewares.push(
-    createLogger({
-      duration: true,
-      collapsed: true,
-    }),
-  );
-}
-
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(...middlewares)),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
 export default store;

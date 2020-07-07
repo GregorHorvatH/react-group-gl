@@ -1,25 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as counterActions from '../../redux/counterActions';
+
 import './styles.scss';
 
 const options = [5, 10, 15, 50];
 
-const Counter = () => {
-  const [value, setValue] = useState(0);
-  const [step, setStep] = useState(options[0]);
-
-  const onDecrement = () => setValue(value - step);
-  const onIncrement = () => setValue(value + step);
-  const onSetStep = (value) => setStep(Number(value));
-
+const Counter = ({ value, step, onDecrement, onIncrement, setStep }) => {
   return (
     <div className="counter">
       <h2 className="title">Counter</h2>
       <div className="controls">
-        <button className="button" onClick={onDecrement}>
+        <button className="button" onClick={() => onDecrement(step)}>
           -
         </button>
         <p className="value">{value}</p>
-        <button className="button" onClick={onIncrement}>
+        <button className="button" onClick={() => onIncrement(step)}>
           +
         </button>
       </div>
@@ -27,7 +24,7 @@ const Counter = () => {
       <select
         className="step"
         value={step}
-        onChange={(e) => onSetStep(e.target.value)}
+        onChange={(e) => setStep(Number(e.target.value))}
       >
         {options.map((item) => (
           <option key={item} value={item}>
@@ -39,4 +36,19 @@ const Counter = () => {
   );
 };
 
-export default Counter;
+const mapStateToProps = ({ counter: { value, step } }) => ({
+  value,
+  step,
+});
+
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      onDecrement: counterActions.decrement,
+      onIncrement: counterActions.increment,
+      setStep: counterActions.setStep,
+    },
+    dispatch,
+  );
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
