@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import Layout from './Layout';
 import InputForm from './InputForm';
 import Filters from './Filters';
 import TodoList from './TodoList';
@@ -13,10 +14,6 @@ const getColor = () => ['#DDD1C7', '#C2CFB2', '#8DB580'][~~(Math.random() * 3)];
 const Todos = ({ items, addTodo, deleteTodo }) => {
   const [filter, setFilter] = useState('desc');
 
-  // const deleteTodo = (id) => {
-  //   setTodos(todos.filter((todo) => todo.id !== id));
-  // };
-
   const setSortAsc = () => setFilter('asc');
   const setSortDesc = () => setFilter('desc');
 
@@ -28,12 +25,11 @@ const Todos = ({ items, addTodo, deleteTodo }) => {
     });
 
   return (
-    <div className="todos">
-      <h2 className="title">Todos</h2>
+    <Layout>
       <InputForm onSubmit={handleAddTodo} />
       <Filters value={filter} onAsc={setSortAsc} onDesc={setSortDesc} />
       <TodoList filter={filter} todos={items} onDelete={deleteTodo} />
-    </div>
+    </Layout>
   );
 };
 

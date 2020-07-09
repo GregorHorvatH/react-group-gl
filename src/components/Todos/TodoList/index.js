@@ -9,19 +9,17 @@ const TodoList = ({ filter, todos, onDelete }) => {
   );
 
   return (
-    <div className="list-wrapper">
-      <ul className="todo-list">
-        <FlipMove>
-          {sortedTodos.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              onDelete={() => onDelete(todo.id)}
-            />
-          ))}
-        </FlipMove>
-      </ul>
-    </div>
+    <ul className="todo-list">
+      <FlipMove>
+        {sortedTodos.map((todo) => (
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onDelete={() => onDelete(todo.id)}
+          />
+        ))}
+      </FlipMove>
+    </ul>
   );
 };
 
