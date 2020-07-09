@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { setAscFilter, setDescFilter } from '../../../redux/todosActions';
 
 const FIlters = ({ value, onAsc, onDesc }) => {
   return (
@@ -27,4 +29,13 @@ const FIlters = ({ value, onAsc, onDesc }) => {
   );
 };
 
-export default FIlters;
+const mapStateToProps = ({ todos: { filter } }) => ({
+  value: filter,
+});
+
+const mapDispatchToProps = {
+  onAsc: setAscFilter,
+  onDesc: setDescFilter,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FIlters);

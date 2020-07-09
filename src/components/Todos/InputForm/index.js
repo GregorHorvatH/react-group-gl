@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import * as todosActions from '../../../redux/todosActions';
+
 import './styles.scss';
+
+const getColor = () => ['#DDD1C7', '#C2CFB2', '#8DB580'][~~(Math.random() * 3)];
 
 const InputForm = ({ onSubmit }) => {
   const [value, setValue] = useState('');
@@ -7,7 +12,11 @@ const InputForm = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    onSubmit(value);
+    onSubmit({
+      id: Date.now(),
+      color: getColor(),
+      text: value,
+    });
     setValue('');
   };
 
@@ -24,4 +33,8 @@ const InputForm = ({ onSubmit }) => {
   );
 };
 
-export default InputForm;
+const mapDispatchToProps = {
+  onSubmit: todosActions.addTodo,
+};
+
+export default connect(null, mapDispatchToProps)(InputForm);

@@ -1,26 +1,26 @@
 import React from 'react';
-import FlipMove from 'react-flip-move';
+import { connect } from 'react-redux';
 import TodoItem from '../TodoItem';
+
 import './styles.scss';
 
-const TodoList = ({ filter, todos, onDelete }) => {
+const TodoList = ({ filter, todos }) => {
   const sortedTodos = [...todos].sort((a, b) =>
     filter === 'asc' ? a.id - b.id : b.id - a.id,
   );
 
   return (
     <ul className="todo-list">
-      <FlipMove>
-        {sortedTodos.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            onDelete={() => onDelete(todo.id)}
-          />
-        ))}
-      </FlipMove>
+      {sortedTodos.map((todo) => (
+        <TodoItem key={todo.id} id={todo.id} />
+      ))}
     </ul>
   );
 };
 
-export default TodoList;
+const mapStateToProps = ({ todos: { filter, items } }) => ({
+  filter,
+  todos: items,
+});
+
+export default connect(mapStateToProps)(TodoList);
