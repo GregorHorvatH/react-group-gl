@@ -19,8 +19,6 @@ class App extends Component {
           <div className="content">
             <div className="widgets">
               <Counter />
-              <Counter />
-
               <Todos />
             </div>
             <Status />
