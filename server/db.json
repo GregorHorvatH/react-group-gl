@@ -20,5 +20,9 @@
       "text": "",
       "id": 4
     }
-  ]
+  ],
+  "settings": {
+    "theme": "light",
+    "background": "cats"
+  }
 }

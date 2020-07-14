@@ -4,13 +4,17 @@ import Layout from './Layout';
 import InputForm from './InputForm';
 import Filters from './Filters';
 import TodoList from './TodoList';
+// import axios from 'axios';
 
-import { getTodos } from '../../redux/todosAPI';
+import { getTodos, fetchSettings } from '../../redux/todosAPI';
 
 import './styles.scss';
 
-const Todos = ({ fetchTodos }) => {
-  useEffect(fetchTodos, []);
+const Todos = ({ fetchTodos, fetchSettings }) => {
+  useEffect(() => {
+    fetchTodos();
+    fetchSettings();
+  }, [fetchTodos, fetchSettings]);
 
   return (
     <Layout>
@@ -23,6 +27,7 @@ const Todos = ({ fetchTodos }) => {
 
 const mapDispatchToProps = {
   fetchTodos: getTodos,
+  fetchSettings,
 };
 
 export default connect(null, mapDispatchToProps)(Todos);

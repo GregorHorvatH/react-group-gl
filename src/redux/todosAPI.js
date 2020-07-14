@@ -29,3 +29,10 @@ export const deleteTodo = (id) => (dispatch) => {
     .then(() => dispatch(actions.deleteTodoSuccess(id)))
     .catch((error) => dispatch(actions.deleteTodoFailure(error)));
 };
+
+export const fetchSettings = () => () => {
+  axios
+    .get('http://localhost:3030/settings')
+    .then(({ data }) => localStorage.setItem('settings', JSON.stringify(data)))
+    .catch(console.log);
+};
