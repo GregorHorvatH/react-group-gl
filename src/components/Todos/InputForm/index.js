@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import * as todosActions from '../../../redux/todosActions';
+// import * as todosActions from '../../../redux/todosActions';
+import { addTodo } from '../../../redux/todosAPI';
 
 import './styles.scss';
 
@@ -13,7 +14,6 @@ const InputForm = ({ onSubmit }) => {
     e.preventDefault();
 
     onSubmit({
-      id: Date.now(),
       color: getColor(),
       text: value,
     });
@@ -34,7 +34,7 @@ const InputForm = ({ onSubmit }) => {
 };
 
 const mapDispatchToProps = {
-  onSubmit: todosActions.addTodo,
+  onSubmit: addTodo,
 };
 
 export default connect(null, mapDispatchToProps)(InputForm);

@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="app">
-          <h1 className="title">Lesson 12 - Redux Toolkit</h1>
+          <h1 className="title">Lesson 13 - Middleware, Thunk</h1>
 
           <div className="content">
             <div className="widgets">

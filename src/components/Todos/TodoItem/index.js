@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteTodo } from '../../../redux/todosActions';
+import { deleteTodo } from '../../../redux/todosAPI';
 import './styles.scss';
 
 class TodoItem extends Component {

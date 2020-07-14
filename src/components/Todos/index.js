@@ -1,23 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import Layout from './Layout';
 import InputForm from './InputForm';
 import Filters from './Filters';
 import TodoList from './TodoList';
 
+import { getTodos } from '../../redux/todosAPI';
+
 import './styles.scss';
 
-const Todos = () => {
-  // const [filter, setFilter] = useState('desc');
-
-  // const setSortAsc = () => setFilter('asc');
-  // const setSortDesc = () => setFilter('desc');
-
-  // const handleAddTodo = (text) =>
-  //   addTodo({
-  //     id: Date.now(),
-  //     color: getColor(),
-  //     text,
-  //   });
+const Todos = ({ fetchTodos }) => {
+  useEffect(fetchTodos, []);
 
   return (
     <Layout>
@@ -28,4 +21,8 @@ const Todos = () => {
   );
 };
 
-export default Todos;
+const mapDispatchToProps = {
+  fetchTodos: getTodos,
+};
+
+export default connect(null, mapDispatchToProps)(Todos);

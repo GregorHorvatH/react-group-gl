@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "color": "yellow",
+      "text": "lorem ipsum"
+    },
+    {
+      "color": "#8DB580",
+      "text": "new item",
+      "id": 2
+    },
+    {
+      "color": "#C2CFB2",
+      "text": "new item 2",
+      "id": 3
+    },
+    {
+      "color": "#8DB580",
+      "text": "",
+      "id": 4
+    }
+  ]
+}
