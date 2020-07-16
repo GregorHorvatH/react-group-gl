@@ -9,11 +9,11 @@ import './styles.scss';
 const TodoList = ({
   filter,
   isLoading,
-  todos,
+  items,
   errorMessage,
   cleanTodoError,
 }) => {
-  const sortedTodos = [...todos].sort((a, b) =>
+  const sortedTodos = [...items].sort((a, b) =>
     filter === 'asc' ? a.id - b.id : b.id - a.id,
   );
 
@@ -42,7 +42,7 @@ const mapStateToProps = ({
 }) => ({
   filter,
   isLoading,
-  todos: items,
+  items,
   errorMessage,
 });
 

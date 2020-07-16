@@ -9,7 +9,7 @@ export const getTodos = () => (dispatch) => {
   axios
     .get('/todos')
     .then(({ data }) => dispatch(actions.getTodosSuccess(data)))
-    .catch((error) => dispatch(actions.getTodosFailure(error)));
+    .catch(({ message }) => dispatch(actions.getTodosFailure(message)));
 };
 
 export const addTodo = (item) => (dispatch) => {
@@ -18,9 +18,7 @@ export const addTodo = (item) => (dispatch) => {
   axios
     .post('/todos', item)
     .then(({ data }) => dispatch(actions.addTodoSuccess(data)))
-    .catch((error) => dispatch(actions.addTodoFailure(error)));
-
-  // dispatch(actions.addTodoFailure('My Error!!!!'));
+    .catch(({ message }) => dispatch(actions.addTodoFailure(message)));
 };
 
 export const deleteTodo = (id) => (dispatch) => {
@@ -29,12 +27,12 @@ export const deleteTodo = (id) => (dispatch) => {
   axios
     .delete(`/todos/${id}`)
     .then(() => dispatch(actions.deleteTodoSuccess(id)))
-    .catch((error) => dispatch(actions.deleteTodoFailure(error)));
+    .catch(({ message }) => dispatch(actions.deleteTodoFailure(message)));
 };
 
-export const fetchSettings = () => () => {
+export const fetchSettings = () => (dispatch) => {
   axios
     .get('/settings')
     .then(({ data }) => localStorage.setItem('settings', JSON.stringify(data)))
-    .catch(console.log);
+    .catch(({ message }) => dispatch(actions.deleteTodoFailure(message)));
 };
