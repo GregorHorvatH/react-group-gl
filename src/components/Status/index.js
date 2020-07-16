@@ -3,24 +3,27 @@ import { connect } from 'react-redux';
 
 import './styles.scss';
 
-const Status = ({ counter, todos }) => {
+const Status = ({ value, step, items }) => {
+  console.log('render status');
+
   return (
     <div className="status">
       <h2 className="title">Status</h2>
 
       <h3 className="subtitle">Counter</h3>
-      <p>value: {counter.value}</p>
-      <p>step: {counter.step}</p>
+      <p>value: {value}</p>
+      <p>step: {step}</p>
 
       <h3 className="subtitle">Todos</h3>
-      <p>count: {todos.items.length}</p>
+      <p>count: {items.length}</p>
     </div>
   );
 };
 
-const mapStateToProps = ({ counter, todos }) => ({
-  counter,
-  todos,
+const mapStateToProps = (state) => ({
+  value: state.counter.value,
+  step: state.counter.step,
+  items: state.todos.items,
 });
 
 export default connect(mapStateToProps)(Status);

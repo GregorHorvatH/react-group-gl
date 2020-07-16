@@ -36,3 +36,12 @@ export const fetchSettings = () => (dispatch) => {
     .then(({ data }) => localStorage.setItem('settings', JSON.stringify(data)))
     .catch(({ message }) => dispatch(actions.deleteTodoFailure(message)));
 };
+
+export const toggleTodo = (todo) => (dispatch) => {
+  dispatch(actions.toggleTodoRequest());
+
+  axios
+    .patch(`/todos/${todo.id}`, { isDone: todo.isDone })
+    .then(() => dispatch(actions.toggleTodoSuccess(todo)))
+    .catch(({ message }) => dispatch(actions.toggleTodoFailure(message)));
+};

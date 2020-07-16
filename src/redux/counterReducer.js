@@ -13,7 +13,6 @@ const setStep = (_, { payload: step }) => step;
 const value = createReducer(initialState.value, {
   [actions.increment.type]: increment,
   [actions.decrement.type]: decrement,
-  [actions.setStep.type]: () => 0,
 });
 
 const step = createReducer(initialState.step, {

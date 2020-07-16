@@ -15,3 +15,7 @@ export const addTodoFailure = createAction('ADD_TODO_FAILURE');
 export const deleteTodoRequest = createAction('DELETE_TODO_REQUEST');
 export const deleteTodoSuccess = createAction('DELETE_TODO_SUCCESS');
 export const deleteTodoFailure = createAction('DELETE_TODO_FAILURE');
+
+export const toggleTodoRequest = createAction('TOGGLE_TODO_REQUEST');
+export const toggleTodoSuccess = createAction('TOGGLE_TODO_SUCCESS');
+export const toggleTodoFailure = createAction('TOGGLE_TODO_FAILURE');

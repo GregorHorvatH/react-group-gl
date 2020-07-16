@@ -1,24 +1,33 @@
 {
   "todos": [
     {
+      "color": "#DDD1C7",
+      "text": "item 1",
       "id": 1,
-      "color": "yellow",
-      "text": "lorem ipsum"
-    },
-    {
-      "color": "#8DB580",
-      "text": "new item",
-      "id": 2
+      "isDone": false
     },
     {
       "color": "#C2CFB2",
-      "text": "new item 2",
+      "text": "item 2",
+      "id": 2,
+      "isDone": false
+    },
+    {
+      "color": "#DDD1C7",
+      "text": "item 3",
       "id": 3
     },
     {
       "color": "#8DB580",
-      "text": "",
-      "id": 4
+      "text": "item 4",
+      "id": 4,
+      "isDone": true
+    },
+    {
+      "color": "#C2CFB2",
+      "text": "sdf",
+      "id": 5,
+      "isDone": true
     }
   ],
   "settings": {

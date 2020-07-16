@@ -12,7 +12,7 @@ const FIlters = ({ value, onAsc, onDesc }) => {
           type="radio"
           value="asc"
           checked={value === 'asc'}
-          onChange={onAsc}
+          onChange={() => onAsc()}
         />
       </label>
       <label>
@@ -22,15 +22,15 @@ const FIlters = ({ value, onAsc, onDesc }) => {
           type="radio"
           value="desc"
           checked={value === 'desc'}
-          onChange={onDesc}
+          onChange={() => onDesc()}
         />
       </label>
     </div>
   );
 };
 
-const mapStateToProps = ({ todos: { filter } }) => ({
-  value: filter,
+const mapStateToProps = (state) => ({
+  value: state.todos.filter,
 });
 
 const mapDispatchToProps = {

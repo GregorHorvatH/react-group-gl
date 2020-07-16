@@ -6,8 +6,14 @@ import { cleanTodoError } from '../../../redux/todosActions';
 
 import './styles.scss';
 
-const TodoList = ({ isLoading, items, errorMessage, cleanTodoError }) => {
-  console.log('render todo list');
+const TodoListDone = ({
+  filter,
+  isLoading,
+  items,
+  errorMessage,
+  cleanTodoError,
+}) => {
+  console.log('render todo list isDone');
 
   return isLoading ? (
     <h3>Loading...</h3>
@@ -30,13 +36,14 @@ const TodoList = ({ isLoading, items, errorMessage, cleanTodoError }) => {
 };
 
 const mapStateToProps = (state) => {
-  const { items, isLoading, errorMessage } = state.todos;
+  const { filter, items, isLoading, errorMessage } = state.todos;
 
   return {
+    filter,
     isLoading,
-    items,
+    items: items.filter((item) => item.isDone),
     errorMessage,
   };
 };
 
-export default connect(mapStateToProps, { cleanTodoError })(TodoList);
+export default connect(mapStateToProps, { cleanTodoError })(TodoListDone);
