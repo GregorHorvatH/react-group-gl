@@ -1,28 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
+import LogInForm from '../LogInForm';
 import { logIn } from '../../redux/sessionOperations';
 
-import withAuth from '../../hoc/withAuth';
-
 const LogIn = ({ logIn }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    logIn();
+  const handleSubmit = (data) => {
+    logIn(data);
   };
 
   return (
     <div className="log-in">
       <h3>LogIn page</h3>
 
-      <form onSubmit={handleSubmit}>
-        <button className="button" onClick={handleSubmit}>
-          Log In
-        </button>
-      </form>
+      <LogInForm onSubmit={handleSubmit} />
     </div>
   );
 };
 
-export default compose(connect(null, { logIn }), withAuth(false))(LogIn);
+export default connect(null, { logIn })(LogIn);

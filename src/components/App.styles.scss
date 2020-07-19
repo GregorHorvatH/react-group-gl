@@ -27,7 +27,7 @@
       margin-right: 5px;
     }
 
-    &.sign-in {
+    &.sign-up {
       margin-bottom: 1px;
       background-color: #fff;
       border-color: #3f6578;
@@ -38,7 +38,7 @@
   .button:hover {
     background-color: #324e5c;
 
-    &.sign-in {
+    &.sign-up {
       background-color: #fff;
       border-color: #324e5c;
       color: #324e5c;
@@ -48,7 +48,7 @@
   .button:active {
     background-color: #263c47;
 
-    &.sign-in {
+    &.sign-up {
       background-color: #fff;
       border-color: #263c47;
       color: #263c47;
@@ -131,6 +131,31 @@
     .extra-props {
       background-color: #ddedaa;
       color: #d7816a;
+    }
+  }
+
+  .log-in {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 350px;
+
+    .label-wrapper {
+      display: flex;
+      margin-bottom: 5px;
+    }
+
+    .label {
+      margin-right: 5px;
+    }
+
+    .input {
+      flex: 1;
     }
   }
 }

@@ -4,6 +4,6 @@ export const logIn = () => (dispatch) => {
   dispatch(actions.logInSuccess());
 };
 
-export const signIn = () => (dispatch) => {
-  dispatch(actions.signIn());
+export const signUp = () => (dispatch) => {
+  dispatch(actions.signUp());
 };

@@ -18,11 +18,11 @@ const Authorization = ({ isAuthorized, user, logOut }) => {
     </div>
   ) : (
     <div className="buttons">
-      <Link className="button log-in" to="/log-in">
+      <Link className="button log-in" to="/login">
         Log In
       </Link>
-      <Link className="button sign-in" to="/sign-in">
-        Sign In
+      <Link className="button sign-up" to="/signup">
+        Sign Up
       </Link>
     </div>
   );

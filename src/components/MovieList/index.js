@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import withFetch from '../../hoc/withFetch';
 import withToggle from '../../hoc/withToggle';
 
-const MovieList = ({ data, loading, error }) => {
-  useEffect(() => console.log('is loading:', loading), [loading]);
-
+const MovieList = ({ data }) => {
   return (
     <ul className="movie-list">
       {data.results &&
