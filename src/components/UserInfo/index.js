@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
-import withAuth from '../../hoc/withAuth';
 
 const UserInfo = ({ user }) => {
   return user ? (
@@ -19,4 +17,4 @@ const mapStateToProps = ({ session: { user } }) => ({
   user,
 });
 
-export default compose(connect(mapStateToProps), withAuth(true))(UserInfo);
+export default connect(mapStateToProps)(UserInfo);

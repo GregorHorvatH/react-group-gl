@@ -3,9 +3,9 @@ import React from 'react';
 import Navigation from '../Navigation';
 import Authorization from '../Authorization';
 
-const Navbar = ({ routes }) => (
+const Navbar = () => (
   <div className="navbar">
-    <Navigation routes={routes} />
+    <Navigation />
     <Authorization />
   </div>
 );

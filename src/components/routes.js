@@ -12,8 +12,8 @@ const UserInfo = lazy(() =>
 const LogIn = lazy(() =>
   import('../components/LogIn' /* webpackChunkName: "log-in-page" */),
 );
-const SignIn = lazy(() =>
-  import('../components/SignIn' /* webpackChunkName: "sign-in-page" */),
+const SignUp = lazy(() =>
+  import('../components/SignUp' /* webpackChunkName: "sign-up-page" */),
 );
 
 const routes = [
@@ -43,19 +43,19 @@ const routes = [
   },
   {
     label: 'Log In',
-    path: '/log-in',
+    path: '/login',
     exact: false,
     needsAuth: false,
     showInMenu: false,
     component: LogIn,
   },
   {
-    label: 'Sign In',
-    path: '/sign-in',
+    label: 'Sign Up',
+    path: '/signup',
     exact: false,
     needsAuth: false,
     showInMenu: false,
-    component: SignIn,
+    component: SignUp,
   },
 ];
 

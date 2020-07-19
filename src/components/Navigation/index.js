@@ -6,8 +6,9 @@ import routes from '../routes';
 const Navigation = ({ isAuthorized }) => {
   return (
     <div className="navigation">
-      {routes.map(({ label, path, exact, needsAuth, showInMenu }) =>
-        showInMenu && ((needsAuth && isAuthorized) || !needsAuth) ? (
+      {routes.map(
+        ({ label, path, exact, needsAuth, showInMenu }) => (
+          // showInMenu && ((needsAuth && isAuthorized) || !needsAuth) ? (
           <NavLink
             className="link"
             activeClassName="active"
@@ -17,7 +18,8 @@ const Navigation = ({ isAuthorized }) => {
           >
             {label}
           </NavLink>
-        ) : null,
+        ),
+        // ) : null,
       )}
     </div>
   );
