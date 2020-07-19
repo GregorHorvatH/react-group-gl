@@ -1,12 +1,12 @@
 import React from 'react';
 
 import Navigation from '../Navigation';
-import Authorization from '../Authorization';
+// import Authorization from '../Authorization';
 
 const Navbar = () => (
   <div className="navbar">
     <Navigation />
-    <Authorization />
+    {/* <Authorization /> */}
   </div>
 );
 
