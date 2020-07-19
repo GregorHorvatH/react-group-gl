@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { logOut } from '../../redux/sessionActions';
 
-import UserContext from '../../context/UserContext';
-
-const Authorization = () => {
-  const { user, onLogIn, onLogOut } = useContext(UserContext);
-
-  return user ? (
+const Authorization = ({ isAuthorized, user, logOut }) => {
+  return isAuthorized ? (
     <div className="authorization">
       <img
         className="avatar"
@@ -13,15 +12,29 @@ const Authorization = () => {
         alt="avatar"
       />
       <span className="user-name">{user.name}</span>
-      <button className="button" onClick={onLogOut}>
+      <button className="button" onClick={() => logOut()}>
         Log Out
       </button>
     </div>
   ) : (
-    <button className="button" onClick={onLogIn}>
-      Log In
-    </button>
+    <div className="buttons">
+      <Link className="button log-in" to="/log-in">
+        Log In
+      </Link>
+      <Link className="button sign-in" to="/sign-in">
+        Sign In
+      </Link>
+    </div>
   );
 };
 
-export default Authorization;
+const mapStateToProps = ({ session: { isAuthorized, user } }) => ({
+  isAuthorized,
+  user,
+});
+
+const mapDispatchToProps = {
+  logOut,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Authorization);

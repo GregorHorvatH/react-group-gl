@@ -1,0 +1,32 @@
+import { createReducer, combineReducers } from '@reduxjs/toolkit';
+import * as actions from './sessionActions';
+
+const initialState = {
+  isAuthorized: false,
+  error: null,
+  token: null,
+  user: {
+    name: 'John Doe',
+    avatar: '/img/avatar.jpeg',
+    age: 35,
+  },
+};
+
+const isAuthorized = createReducer(initialState.isAuthorized, {
+  [actions.logInSuccess.type]: () => true,
+  [actions.signIn.type]: () => true,
+  [actions.logOut.type]: () => false,
+});
+
+const error = createReducer(initialState.error, {});
+
+const token = createReducer(initialState.token, {});
+
+const user = createReducer(initialState.user, {});
+
+export default combineReducers({
+  isAuthorized,
+  error,
+  token,
+  user,
+});

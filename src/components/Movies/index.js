@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Loader from '../../components/Loader';
-import MovieList from '../../components/MovieList';
+import Loader from '../Loader';
+import MovieList from '../MovieList';
 import { getPopular } from '../../utils/moviesAPI';
+import withAuth from '../../hoc/withAuth';
 
 const Movies = () => {
   const [loading, setLoading] = useState(true);
@@ -24,4 +25,4 @@ const Movies = () => {
   );
 };
 
-export default Movies;
+export default withAuth(true)(Movies);

@@ -3,7 +3,7 @@ import React from 'react';
 import MyComponent1 from './MyComponent1';
 import MyComponent2 from './MyComponent2';
 import MyComponent3 from './MyComponent3';
-import MovieList from '../../components/MovieList';
+import MovieList from '../MovieList';
 import Toggler from '../../hoc/Toggler';
 
 const user = { name: 'Bobby', age: 15 };

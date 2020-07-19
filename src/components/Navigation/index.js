@@ -1,15 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import routes from '../routes';
 
-import UserContext from '../../context/UserContext';
-
-const Navigation = ({ routes }) => {
-  const { user } = useContext(UserContext);
-
+const Navigation = ({ isAuthorized }) => {
   return (
     <div className="navigation">
-      {routes.map(({ label, path, exact, needsAuth }) =>
-        (needsAuth && user) || !needsAuth ? (
+      {routes.map(({ label, path, exact, needsAuth, showInMenu }) =>
+        showInMenu && ((needsAuth && isAuthorized) || !needsAuth) ? (
           <NavLink
             className="link"
             activeClassName="active"
@@ -25,26 +23,8 @@ const Navigation = ({ routes }) => {
   );
 };
 
-// const Navigation = ({ routes }) => (
-//   <UserContext.Consumer>
-//     {({ user }) => (
-//       <div className="navigation">
-//         {routes.map(({ label, path, exact, needsAuth }) =>
-//           (needsAuth && user) || !needsAuth ? (
-//             <NavLink
-//               className="link"
-//               activeClassName="active"
-//               to={path}
-//               exact={exact}
-//               key={path}
-//             >
-//               {label}
-//             </NavLink>
-//           ) : null,
-//         )}
-//       </div>
-//     )}
-//   </UserContext.Consumer>
-// );
+const mapStateToProps = ({ session: { isAuthorized } }) => ({
+  isAuthorized,
+});
 
-export default Navigation;
+export default connect(mapStateToProps)(Navigation);
