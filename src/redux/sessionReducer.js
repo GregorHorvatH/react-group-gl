@@ -12,25 +12,47 @@ const initialState = {
 const isAuthorized = createReducer(initialState.isAuthorized, {
   [actions.logInSuccess.type]: () => true,
   [actions.signUpSuccess.type]: () => true,
-  [actions.logOut.type]: () => false,
+
+  [actions.logInRequest.type]: () => false,
+  [actions.logOutSuccess.type]: () => false,
+  [actions.logOutFailure.type]: () => false,
 });
 
 // ===== error =====
-const error = createReducer(initialState.error, {});
+const error = createReducer(initialState.error, {
+  [actions.signUpFailure.type]: (_, { payload: message }) => message,
+
+  [actions.logInRequest.type]: () => null,
+  [actions.signUpRequest.type]: () => null,
+  [actions.logOutRequest.type]: () => null,
+
+  [actions.logInSuccess.type]: () => null,
+  [actions.signUpSuccess.type]: () => null,
+  [actions.logOutSuccess.type]: () => null,
+});
 
 // ===== token =====
-const token = createReducer(initialState.token, {});
+const setToken = (_, { payload: { token } }) => token;
+
+const token = createReducer(initialState.token, {
+  [actions.logInSuccess.type]: setToken,
+  [actions.signUpSuccess.type]: setToken,
+
+  [actions.logInRequest.type]: () => null,
+  [actions.logOutSuccess.type]: () => null,
+  [actions.logOutFailure.type]: () => null,
+});
 
 // ===== user =====
-const setUser = () => ({
-  name: 'John Doe',
-  avatar: '/img/avatar.jpeg',
-  age: 35,
-});
+const setUser = (_, { payload: { user } }) => user;
 
 const user = createReducer(initialState.user, {
   [actions.logInSuccess.type]: setUser,
-  [actions.logOut.type]: () => null,
+  [actions.signUpSuccess.type]: setUser,
+
+  [actions.logInRequest.type]: () => null,
+  [actions.logOutSuccess.type]: () => null,
+  [actions.logOutFailure.type]: () => null,
 });
 
 export default combineReducers({

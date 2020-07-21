@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 const LoginForm = ({ onSubmit }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('test.user@gmail.com');
+  const [password, setPassword] = useState('1234567');
 
   const handleSubmit = (e) => {
     e.preventDefault();

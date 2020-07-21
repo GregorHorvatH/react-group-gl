@@ -1,19 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SignUpForm from '../SignUpForm';
 import { signUp } from '../../redux/sessionOperations';
 
-const SignUp = ({ onSignUp }) => (
-  <div className="log-in">
-    <h3>Sign Up Page</h3>
+const SignUp = ({ isAuthorized, error, onSignUp, history }) => {
+  useEffect(() => {
+    if (!isAuthorized) {
+      return;
+    }
 
-    <SignUpForm onSubmit={onSignUp} />
+    history.replace('/');
+  }, [isAuthorized, history]);
 
-    <p className="center">
-      or <Link to="/login">Log In</Link>
-    </p>
-  </div>
-);
+  return (
+    <div className="log-in">
+      <h3>Sign Up Page</h3>
 
-export default connect(null, { onSignUp: signUp })(SignUp);
+      <SignUpForm onSubmit={onSignUp} />
+      <h4 className="center">{error}</h4>
+
+      <p className="center">
+        or <Link to="/login">Log In</Link>
+      </p>
+    </div>
+  );
+};
+
+const mapStateToProps = ({ session: { isAuthorized, error } }) => ({
+  isAuthorized,
+  error,
+});
+
+export default connect(mapStateToProps, { onSignUp: signUp })(SignUp);

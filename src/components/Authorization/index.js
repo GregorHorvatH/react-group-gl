@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logOut } from '../../redux/sessionActions';
+import { logOut } from '../../redux/sessionOperations';
 
 const Authorization = ({ isAuthorized, user, logOut }) => {
   return isAuthorized ? (
     <div className="authorization">
       <img
         className="avatar"
-        src={process.env.PUBLIC_URL + user.avatar}
+        // src={process.env.PUBLIC_URL + user.avatar}
+        src="/img/avatar.jpeg"
         alt="avatar"
       />
       <span className="user-name">{user.name}</span>

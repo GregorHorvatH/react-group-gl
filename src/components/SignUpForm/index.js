@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 const SignUpForm = ({ onSubmit }) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState('User Two');
+  const [email, setEmail] = useState('user2@gmail.com');
+  const [password, setPassword] = useState('1234567');
 
   const handleSubmit = (e) => {
     e.preventDefault();
