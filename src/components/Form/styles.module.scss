@@ -1,0 +1,14 @@
+.inputForm {
+  width: 300px;
+  height: 150px;
+
+  border: 1px solid red;
+
+  .label {
+    color: blue;
+
+    .input {
+      background-color: yellow;
+    }
+  }
+}
