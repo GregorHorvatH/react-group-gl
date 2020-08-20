@@ -1,14 +1,12 @@
 .inputForm {
+  display: flex;
+  flex-direction: column;
   width: 300px;
-  height: 150px;
-
-  border: 1px solid red;
 
   .label {
-    color: blue;
-
     .input {
-      background-color: yellow;
+      width: 100%;
+      // background-color: yellow;
     }
   }
 }

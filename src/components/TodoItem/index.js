@@ -1,9 +1,13 @@
 import React from 'react';
 
-const TodoItem = ({ item }) => (
+const TodoItem = ({ item, onDelete, onToggle }) => (
   <li>
-    {item.id === 1 ? <p>one</p> : <p>not one</p>}
-    {item.text} <button>close</button>
+    <input
+      type="checkbox"
+      checked={item.isChecked}
+      onChange={() => onToggle(item.id)}
+    />
+    {item.text} <button onClick={() => onDelete(item.id)}>close</button>
   </li>
 );
 
