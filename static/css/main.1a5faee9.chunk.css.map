@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles.module.scss"],"names":[],"mappings":"AAAA,yBACE,YAAa,CACb,qBAAsB,CACtB,WAAY,CAHd,mEAOM,UAAW","file":"main.1a5faee9.chunk.css","sourcesContent":[".inputForm {\n  display: flex;\n  flex-direction: column;\n  width: 300px;\n\n  .label {\n    .input {\n      width: 100%;\n      // background-color: yellow;\n    }\n  }\n}\n"]}

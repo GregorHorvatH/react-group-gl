@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-group-gl/static/css/main.1a5faee9.chunk.css",
+    "main.js": "/react-group-gl/static/js/main.4073fdb1.chunk.js",
+    "main.js.map": "/react-group-gl/static/js/main.4073fdb1.chunk.js.map",
+    "runtime-main.js": "/react-group-gl/static/js/runtime-main.7df64ed2.js",
+    "runtime-main.js.map": "/react-group-gl/static/js/runtime-main.7df64ed2.js.map",
+    "static/js/2.19aee4cb.chunk.js": "/react-group-gl/static/js/2.19aee4cb.chunk.js",
+    "static/js/2.19aee4cb.chunk.js.map": "/react-group-gl/static/js/2.19aee4cb.chunk.js.map",
+    "index.html": "/react-group-gl/index.html",
+    "precache-manifest.0a1a925337034d2313cb42ad4d2330f9.js": "/react-group-gl/precache-manifest.0a1a925337034d2313cb42ad4d2330f9.js",
+    "service-worker.js": "/react-group-gl/service-worker.js",
+    "static/css/main.1a5faee9.chunk.css.map": "/react-group-gl/static/css/main.1a5faee9.chunk.css.map",
+    "static/js/2.19aee4cb.chunk.js.LICENSE.txt": "/react-group-gl/static/js/2.19aee4cb.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7df64ed2.js",
+    "static/js/2.19aee4cb.chunk.js",
+    "static/css/main.1a5faee9.chunk.css",
+    "static/js/main.4073fdb1.chunk.js"
+  ]
+}
