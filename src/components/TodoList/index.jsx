@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TodoItem from '../TodoItem';
+import './styles.scss';
 
 const TodoList = ({ items, onDelete, onToggle }) => (
-  <ul>
+  <ul className="todo-list">
     {items.map((item) => (
       <TodoItem
         key={item.id}

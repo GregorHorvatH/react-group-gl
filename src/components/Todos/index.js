@@ -31,7 +31,7 @@ class Todos extends Component {
     }));
   };
 
-  handleToggle = (id) => {
+  handleToggleTodo = (id) => {
     this.setState(({ items }) => ({
       items: items.map((item) =>
         item.id === id
@@ -46,12 +46,12 @@ class Todos extends Component {
 
   render() {
     return (
-      <WithTitle title={this.state.title}>
+      <WithTitle title={this.state.title} width={400}>
         <Form onSubmit={this.handleAddTodo} />
         <TodoList
           items={this.state.items}
           onDelete={this.handleDeleteTodo}
-          onToggle={this.handleToggle}
+          onToggle={this.handleToggleTodo}
         />
       </WithTitle>
     );

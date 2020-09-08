@@ -66,7 +66,7 @@ class Form extends React.Component {
             onChange={this.handleInputChange}
           />
         </label>
-        <div className="radios">
+        <div className={styles.radios}>
           <label>
             <span>As is</span>
             <input
