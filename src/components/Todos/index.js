@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Form from '../Form';
+import Filter from '../Filter';
 import TodoList from '../TodoList';
 import WithTitle from '../WithTitle';
 
@@ -11,18 +12,14 @@ class Todos extends Component {
       { id: 2, text: 'купить молоко', isChecked: false },
       { id: 3, text: 'купить колбасу', isChecked: true },
     ],
+    filter: '',
   };
 
   handleAddTodo = (item) => {
     // setState is async
-    this.setState(
-      ({ items }) => ({
-        items: [...items, item],
-      }),
-      () => {
-        console.log('items:', this.state.items);
-      },
-    );
+    this.setState(({ items }) => ({
+      items: [...items, item],
+    }));
   };
 
   handleDeleteTodo = (id) => {
@@ -44,10 +41,15 @@ class Todos extends Component {
     }));
   };
 
+  handleFilterChange = (e) => {
+    this.setState({ filter: e.target.value });
+  };
+
   render() {
     return (
       <WithTitle title={this.state.title} width={400}>
         <Form onSubmit={this.handleAddTodo} />
+        <Filter value={this.state.filter} onChange={this.handleFilterChange} />
         <TodoList
           items={this.state.items}
           onDelete={this.handleDeleteTodo}

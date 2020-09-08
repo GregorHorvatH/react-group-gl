@@ -1,5 +1,5 @@
 import React from 'react';
-import { uuid } from 'uuidv4';
+import { v4 as uuid } from 'uuid';
 
 import styles from './styles.module.scss';
 
@@ -10,12 +10,6 @@ const CASES = Object.freeze({
 });
 
 class Form extends React.Component {
-  // constructor() {
-  //   super();
-
-  //   this.handleSubmit = this.handleSubmit.bind(this);
-  // }
-
   state = {
     text: '',
     case: CASES.AS_IS,
