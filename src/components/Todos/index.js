@@ -5,18 +5,24 @@ import TodoList from '../TodoList';
 import WithTitle from '../WithTitle';
 
 class Todos extends Component {
+  // constructor() {
+  //   super();
+
+  //   console.log('constructor');
+  // }
+
   state = {
     title: 'Todo List',
-    items: [
-      { id: 1, text: 'купить хлеб', isChecked: false },
-      { id: 2, text: 'купить молоко', isChecked: false },
-      { id: 3, text: 'купить колбасу', isChecked: true },
-    ],
+    // items: [
+    //   { id: 1, text: 'купить хлеб', isChecked: false },
+    //   { id: 2, text: 'купить молоко', isChecked: false },
+    //   { id: 3, text: 'купить колбасу', isChecked: true },
+    // ],
+    items: [],
     filter: '',
   };
 
   handleAddTodo = (item) => {
-    // setState is async
     this.setState(({ items }) => ({
       items: [...items, item],
     }));
@@ -45,7 +51,27 @@ class Todos extends Component {
     this.setState({ filter: e.target.value });
   };
 
+  componentDidMount() {
+    // console.log('todos did mount, load data');
+
+    const items = JSON.parse(localStorage.getItem('todos'));
+
+    if (items) {
+      this.setState({ items });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // console.log('todo did update');
+
+    if (prevState.items !== this.state.items) {
+      localStorage.setItem('todos', JSON.stringify(this.state.items));
+    }
+  }
+
   render() {
+    // console.log('todos render');
+
     return (
       <WithTitle title={this.state.title} width={400}>
         <Form onSubmit={this.handleAddTodo} />

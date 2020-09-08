@@ -1,0 +1,27 @@
+import React, { Component } from 'react';
+
+class Clock extends Component {
+  state = {
+    value: '00:00',
+  };
+
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      this.setState({ value: new Date().toLocaleTimeString() });
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
+  render() {
+    return (
+      <div className="clock">
+        <p>{this.state.value}</p>
+      </div>
+    );
+  }
+}
+
+export default Clock;

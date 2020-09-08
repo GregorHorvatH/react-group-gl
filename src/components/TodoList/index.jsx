@@ -4,7 +4,7 @@ import TodoItem from '../TodoItem';
 import './styles.scss';
 
 const TodoList = ({ items, onDelete, onToggle }) => (
-  <ul className="todo-list">
+  <ul className="todo-items">
     {items.map((item) => (
       <TodoItem
         key={item.id}
