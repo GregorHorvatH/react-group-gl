@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import Modal from '../Modal';
-import Clock from '../Clock';
+// import Clock from '../Clock';
+import HookTest from '../HookTest';
 
 const NewComponent = () => {
   const [showModal, setShowModal] = useState(false);
@@ -11,7 +12,7 @@ const NewComponent = () => {
 
   return (
     <div className="new-component">
-      <button onClick={handleToggleModal}>Show Clock</button>
+      <button onClick={handleToggleModal}>Show Hook Test</button>
 
       {/* {showModal && (
         <Modal onClose={handleToggleModal}>
@@ -25,7 +26,9 @@ const NewComponent = () => {
         </Modal>
       )} */}
 
-      {showModal && <Clock />}
+      {/* {showModal && <Clock />} */}
+
+      {showModal && <HookTest />}
     </div>
   );
 };
