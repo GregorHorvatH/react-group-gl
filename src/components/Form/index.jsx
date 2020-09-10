@@ -1,5 +1,5 @@
 import React from 'react';
-import { v4 as uuid } from 'uuid';
+// import { v4 as uuid } from 'uuid';
 
 import styles from './styles.module.scss';
 
@@ -32,7 +32,7 @@ class Form extends React.Component {
     }
 
     this.props.onSubmit({
-      id: uuid(),
+      // id: uuid(),
       isChecked: false,
       text,
     });

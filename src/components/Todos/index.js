@@ -3,48 +3,68 @@ import Form from '../Form';
 import Filter from '../Filter';
 import TodoList from '../TodoList';
 import WithTitle from '../WithTitle';
+import {
+  getAllTodos,
+  createTodo,
+  deleteTodo,
+  updateTodo,
+} from '../../api/todos';
 
 class Todos extends Component {
-  // constructor() {
-  //   super();
-
-  //   console.log('constructor');
-  // }
-
   state = {
     title: 'Todo List',
-    // items: [
-    //   { id: 1, text: 'купить хлеб', isChecked: false },
-    //   { id: 2, text: 'купить молоко', isChecked: false },
-    //   { id: 3, text: 'купить колбасу', isChecked: true },
-    // ],
     items: [],
     filter: '',
+    error: '',
+    isLoading: false,
   };
 
   handleAddTodo = (item) => {
-    this.setState(({ items }) => ({
-      items: [...items, item],
-    }));
+    this.setState({ isLoading: true });
+
+    createTodo(item)
+      .then((newItem) => {
+        this.setState(({ items }) => ({
+          items: [...items, newItem],
+        }));
+      })
+      .catch((error) => this.setState({ error }))
+      .finally(() => this.setState({ isLoading: false }));
   };
 
   handleDeleteTodo = (id) => {
-    this.setState(({ items }) => ({
-      items: items.filter((item) => item.id !== id),
-    }));
+    this.setState({ isLoading: true });
+
+    deleteTodo(id)
+      .then(() => {
+        this.setState(({ items }) => ({
+          items: items.filter((item) => item.id !== id),
+        }));
+      })
+      .catch((error) => this.setState({ error }))
+      .finally(() => this.setState({ isLoading: false }));
   };
 
   handleToggleTodo = (id) => {
-    this.setState(({ items }) => ({
-      items: items.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              isChecked: !item.isChecked,
-            }
-          : item,
-      ),
-    }));
+    const isChecked = this.state.items.find((item) => item.id === id).isChecked;
+
+    this.setState({ isLoading: true });
+
+    updateTodo(id, { isChecked: !isChecked })
+      .then((newItem) => {
+        this.setState(({ items }) => ({
+          items: items.map((item) =>
+            item.id === id
+              ? {
+                  ...item,
+                  isChecked: newItem.isChecked,
+                }
+              : item,
+          ),
+        }));
+      })
+      .catch((error) => this.setState({ error }))
+      .finally(() => this.setState({ isLoading: false }));
   };
 
   handleFilterChange = (e) => {
@@ -52,35 +72,31 @@ class Todos extends Component {
   };
 
   componentDidMount() {
-    // console.log('todos did mount, load data');
+    this.setState({ isLoading: true });
 
-    const items = JSON.parse(localStorage.getItem('todos'));
-
-    if (items) {
-      this.setState({ items });
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    // console.log('todo did update');
-
-    if (prevState.items !== this.state.items) {
-      localStorage.setItem('todos', JSON.stringify(this.state.items));
-    }
+    getAllTodos()
+      .then((items) => this.setState({ items }))
+      .catch((error) => this.setState({ error }))
+      .finally(() => this.setState({ isLoading: false }));
   }
 
   render() {
-    // console.log('todos render');
+    const { title, filter, items, isLoading } = this.state;
 
     return (
-      <WithTitle title={this.state.title} width={400}>
+      <WithTitle title={title} width={400}>
         <Form onSubmit={this.handleAddTodo} />
-        <Filter value={this.state.filter} onChange={this.handleFilterChange} />
-        <TodoList
-          items={this.state.items}
-          onDelete={this.handleDeleteTodo}
-          onToggle={this.handleToggleTodo}
-        />
+        <Filter value={filter} onChange={this.handleFilterChange} />
+
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <TodoList
+            items={items}
+            onDelete={this.handleDeleteTodo}
+            onToggle={this.handleToggleTodo}
+          />
+        )}
       </WithTitle>
     );
   }

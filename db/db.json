@@ -1,0 +1,14 @@
+{
+  "todos": [
+    {
+      "isChecked": true,
+      "text": "Cold Pursuit",
+      "id": 1
+    },
+    {
+      "isChecked": true,
+      "text": "wave culture",
+      "id": 2
+    }
+  ]
+}
