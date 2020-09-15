@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
-const UserDetails = ({ match, history }) => {
+const UserDetails = ({ match, location, history }) => {
   const [user, setUser] = useState();
-  // const { userId } = match.params;
-  const userId = 'a1da4d77-bb2e-4909-86cf-4960ee3a0160';
+  const { userId } = match.params;
 
   const handleGoBack = () => {
-    window.history.back();
+    history.push({
+      pathname: location.state.url || '/',
+      search: `?filter=${location.state.filter}`,
+    });
   };
 
   useEffect(() => {

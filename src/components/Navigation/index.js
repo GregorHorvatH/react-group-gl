@@ -1,19 +1,24 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+
+import routes from '../../routes';
 
 const Navigation = () => (
   <div className="navigation">
-    <a className="link active-link" href="/" aria-current="page">
-      Home
-    </a>
-    <a className="link" href="/users-page">
-      Users
-    </a>
-    <a className="link" href="/home-works">
-      Home Works
-    </a>
-    <a className="link" href="/about">
-      About
-    </a>
+    {routes.map(
+      ({ path, isExact, label, isInMenu }) =>
+        isInMenu && (
+          <NavLink
+            className="link"
+            activeClassName="active-link"
+            to={path}
+            exact={isExact}
+            key={path}
+          >
+            {label}
+          </NavLink>
+        ),
+    )}
   </div>
 );
 

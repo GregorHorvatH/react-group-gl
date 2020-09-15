@@ -1,39 +1,32 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-import Home from '../Home';
-import Users from '../Users';
-import HomeWorks from '../HomeWorks';
-import About from '../About';
 import NotFound from '../NotFound';
-// import UserDetails from '../UserDetails';
 
-const PageSelector = () => {
-  switch (window.location.pathname) {
-    case '/':
-      return <Home />;
-    case '/users-page':
-      return <Users />;
-    case '/home-works':
-      return <HomeWorks />;
-    case '/about':
-      return <About />;
-    default:
-      return <NotFound />;
-  }
-};
+import routes from '../../routes';
 
-const Content = () => {
-  useEffect(() => {
-    console.log(window.location.pathname);
-  }, []);
+const Content = () => (
+  <div className="content">
+    <h1>Lesson 05, Routing & Code Splitting</h1>
 
-  return (
-    <div className="content">
-      <h1>Lesson 07 - Routing</h1>
+    <Switch>
+      {routes.map(({ path, isExact, component: Component }) => (
+        <Route path={path} exact={isExact} component={Component} key={path} />
+        // <Route
+        //   path={path}
+        //   exact={isExact}
+        //   render={(props) => {
+        //     console.log('props:', props);
 
-      <PageSelector />
-    </div>
-  );
-};
+        //     return <Component />;
+        //   }}
+        //   key={path}
+        // />
+      ))}
+
+      <Route component={NotFound} />
+    </Switch>
+  </div>
+);
 
 export default Content;
