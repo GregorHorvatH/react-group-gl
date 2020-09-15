@@ -4,6 +4,8 @@ import Home from '../Home';
 import Users from '../Users';
 import HomeWorks from '../HomeWorks';
 import About from '../About';
+import NotFound from '../NotFound';
+// import UserDetails from '../UserDetails';
 
 const PageSelector = () => {
   switch (window.location.pathname) {
@@ -16,7 +18,7 @@ const PageSelector = () => {
     case '/about':
       return <About />;
     default:
-      return <Home />;
+      return <NotFound />;
   }
 };
 
@@ -30,15 +32,6 @@ const Content = () => {
       <h1>Lesson 07 - Routing</h1>
 
       <PageSelector />
-      {/* <div className="home">
-        <h3>Home Page</h3>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla dicta
-          ullam, laborum velit nesciunt hic provident est voluptate blanditiis,
-          neque sapiente tempore impedit dolorem amet voluptatibus eos illo,
-          magnam sunt.
-        </p>
-      </div> */}
     </div>
   );
 };

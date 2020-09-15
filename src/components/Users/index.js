@@ -73,7 +73,6 @@ class Users extends Component {
                 ))}
             </div>
           </div>
-          {/* <Route path={routes.USER_DETAILS} component={UserDetails} /> */}
         </div>
       </div>
     );
