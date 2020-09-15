@@ -1,31 +1,19 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-
-import { routes } from '../../routes';
 
 const Navigation = () => (
   <div className="navigation">
-    <NavLink
-      className="link"
-      activeClassName="active-link"
-      to={routes.HOME}
-      exact
-    >
+    <a className="link active-link" href="/" aria-current="page">
       Home
-    </NavLink>
-    <NavLink className="link" activeClassName="active-link" to={routes.USERS}>
+    </a>
+    <a className="link" href="/users-page">
       Users
-    </NavLink>
-    <NavLink
-      className="link"
-      activeClassName="active-link"
-      to={routes.HOME_WORKS}
-    >
+    </a>
+    <a className="link" href="/home-works">
       Home Works
-    </NavLink>
-    <NavLink className="link" activeClassName="active-link" to={routes.ABOUT}>
+    </a>
+    <a className="link" href="/about">
       About
-    </NavLink>
+    </a>
   </div>
 );
 

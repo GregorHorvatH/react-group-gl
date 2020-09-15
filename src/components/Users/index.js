@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
-import qs from 'query-string';
+// import { Link, Route } from 'react-router-dom';
+// import qs from 'query-string';
 
-import UserDetails from '../UserDetails';
-
-import { routes } from '../../routes';
+// import UserDetails from '../UserDetails';
 
 import './User.styles.scss';
 
@@ -12,6 +10,17 @@ class Users extends Component {
   state = {
     userList: [],
     filter: '',
+  };
+
+  handleFilterChange = (e) => {
+    this.setState({
+      filter: e.target.value,
+    });
+
+    // this.props.history.push({
+    //   pathname: this.props.location.pathname,
+    //   search: `filter=${e.target.value}`,
+    // });
   };
 
   componentDidMount() {
@@ -23,13 +32,14 @@ class Users extends Component {
         }),
       );
 
-    const { filter = '' } = qs.parse(this.props.location.search);
-    this.setState({ filter });
+    // const { filter = '' } = qs.parse(this.props.location.search);
+    // this.setState({ filter });
   }
 
   render() {
     const { userList, filter } = this.state;
-    const { url } = this.props.match;
+    // const { url } = this.props.match;
+    const url = '/users-page';
 
     return (
       <div className="users">
@@ -39,16 +49,7 @@ class Users extends Component {
           <input
             type="text"
             value={filter}
-            onChange={(e) => {
-              this.setState({
-                filter: e.target.value,
-              });
-
-              this.props.history.push({
-                pathname: this.props.location.pathname,
-                search: `filter=${e.target.value}`,
-              });
-            }}
+            onChange={this.handleFilterChange}
           />
         </label>
         <p>
@@ -66,15 +67,13 @@ class Users extends Component {
                   name.toLowerCase().includes(filter.toLowerCase()),
                 )
                 .map(({ id, name }) => (
-                  <Link to={`${url}/${id}`} key={id}>
+                  <a href={`${url}/${id}`} key={id}>
                     {name}
-                  </Link>
+                  </a>
                 ))}
             </div>
           </div>
-          <div>
-            <Route path={routes.USER_DETAILS} component={UserDetails} />
-          </div>
+          {/* <Route path={routes.USER_DETAILS} component={UserDetails} /> */}
         </div>
       </div>
     );

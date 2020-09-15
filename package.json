@@ -1,8 +1,7 @@
 {
-  "name": "react-group-30",
+  "name": "react-group-gl",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dfg.github.io/project-name/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -14,7 +13,6 @@
     "query-string": "^6.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {
