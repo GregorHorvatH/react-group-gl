@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Clock extends Component {
   state = {
-    value: '00:00',
+    value: new Date().toLocaleTimeString(),
   };
 
   componentDidMount() {
