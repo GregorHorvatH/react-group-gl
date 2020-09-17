@@ -6,9 +6,19 @@
       "id": 1
     },
     {
-      "isChecked": true,
+      "isChecked": false,
       "text": "wave culture",
       "id": 2
+    },
+    {
+      "isChecked": true,
+      "text": "купить хлеб",
+      "id": 3
+    },
+    {
+      "isChecked": false,
+      "text": "tiesto elements",
+      "id": 4
     }
   ]
 }

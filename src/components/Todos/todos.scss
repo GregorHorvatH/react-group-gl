@@ -1,0 +1,21 @@
+.todos-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.todos-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 300ms linear;
+}
+
+.todos-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.todos-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 300ms linear;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import Form from '../Form';
 import Filter from '../Filter';
 import TodoList from '../TodoList';
@@ -10,15 +11,10 @@ import {
   updateTodo,
 } from '../../api/todos';
 
-class Todos extends Component {
-  state = {
-    title: 'Todo List',
-    items: [],
-    filter: '',
-    error: '',
-    isLoading: false,
-  };
+import Context from './TodosContext';
+import './todos.scss';
 
+class Todos extends Component {
   handleAddTodo = (item) => {
     this.setState({ isLoading: true });
 
@@ -80,24 +76,46 @@ class Todos extends Component {
       .finally(() => this.setState({ isLoading: false }));
   }
 
+  state = {
+    title: 'Todo List',
+    items: [],
+    filter: '',
+    error: '',
+    isLoading: false,
+    isVisible: true,
+    onDelete: this.handleDeleteTodo,
+    onToggle: this.handleToggleTodo,
+  };
+
+  handleToggleVisible = () =>
+    this.setState(({ isVisible }) => ({ isVisible: !isVisible }));
+
   render() {
-    const { title, filter, items, isLoading } = this.state;
+    const { title, filter, isLoading, isVisible } = this.state;
 
     return (
-      <WithTitle title={title} width={400}>
-        <Form onSubmit={this.handleAddTodo} />
-        <Filter value={filter} onChange={this.handleFilterChange} />
+      <Context.Provider value={this.state}>
+        <WithTitle title={title} width={400}>
+          <Form onSubmit={this.handleAddTodo} />
+          <Filter value={filter} onChange={this.handleFilterChange} />
 
-        {isLoading ? (
-          <p>Loading...</p>
-        ) : (
-          <TodoList
-            items={items}
-            onDelete={this.handleDeleteTodo}
-            onToggle={this.handleToggleTodo}
-          />
-        )}
-      </WithTitle>
+          <button onClick={this.handleToggleVisible}>Push me</button>
+          <CSSTransition
+            classNames="todos"
+            in={isVisible}
+            timeout={300}
+            unmountOnExit
+            onEnter={() => console.log('enter')}
+            onEntering={() => console.log('entering')}
+            onEntered={() => console.log('entered')}
+            onExit={() => console.log('exit')}
+            onExiting={() => console.log('exiting')}
+            onExited={() => console.log('exited')}
+          >
+            {isLoading ? <p>Loading...</p> : <TodoList />}
+          </CSSTransition>
+        </WithTitle>
+      </Context.Provider>
     );
   }
 }

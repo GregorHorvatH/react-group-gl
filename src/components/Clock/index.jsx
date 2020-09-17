@@ -1,4 +1,10 @@
 import React, { Component } from 'react';
+import { compose } from 'recompose';
+
+import withHigherOrderComponent from '../../hoc/withHigherOrderComponent';
+import withLog from '../../hoc/withLog';
+// import withFetch from '../../hoc/withFetch';
+import withToggle from '../../hoc/withToggle';
 
 class Clock extends Component {
   state = {
@@ -24,4 +30,16 @@ class Clock extends Component {
   }
 }
 
-export default Clock;
+// export default Clock;
+// export default withHigherOrderComponent(Clock);
+// export default withLog(Clock);
+// export default withFetch('http://localhost:3004/todos')(Clock);
+// export default withToggle(Clock);
+
+// export default withToggle(
+//   withHigherOrderComponent(
+//     withFetch('http://localhost:3004/todos')(withLog(Clock)),
+//   ),
+// );
+
+export default compose(withToggle, withHigherOrderComponent, withLog)(Clock);
