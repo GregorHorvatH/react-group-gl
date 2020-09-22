@@ -1,0 +1,23 @@
+.counter {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+
+  .value {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    button {
+      width: 50px;
+    }
+
+    span {
+      padding: 0 10px;
+    }
+  }
+
+  select {
+    width: 100%;
+  }
+}
