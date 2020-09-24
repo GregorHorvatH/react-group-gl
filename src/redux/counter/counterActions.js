@@ -1,16 +1,8 @@
-import types from './counterTypes';
+import { createAction } from '@reduxjs/toolkit';
 
-export const onIncrement = (step) => ({
-  type: types.INCREMENT,
+export const onIncrement = createAction('counter/increment', (step) => ({
   payload: { step },
-});
-
-export const onDecrement = (step) => ({
-  type: types.DECREMENT,
-  payload: { step },
-});
-
-export const onSetStep = (value) => ({
-  type: types.SET_STEP,
-  payload: { value },
-});
+  error: 'no error here :)',
+}));
+export const onDecrement = createAction('counter/decrement');
+export const onSetStep = createAction('counter/setStep');
