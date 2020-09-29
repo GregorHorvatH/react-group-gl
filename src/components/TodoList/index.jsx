@@ -1,13 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import TodoItem from '../TodoItem';
-import Context from '../Todos/TodosContext';
 
 import './styles.scss';
 
-const TodoList = () => {
-  const { items } = useContext(Context);
-
+const TodoList = ({ items }) => {
   return (
     <ul className="todo-items">
       {items.map((item) => (
@@ -26,4 +24,8 @@ TodoList.propTypes = {
   ),
 };
 
-export default TodoList;
+const mapStateToProps = ({ todos }) => ({
+  items: todos.items,
+});
+
+export default connect(mapStateToProps)(TodoList);

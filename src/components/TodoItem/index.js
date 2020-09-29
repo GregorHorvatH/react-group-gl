@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Context from '../Todos/TodosContext';
+import { connect } from 'react-redux';
+import { deleteTodo, toggleTodo } from '../../redux/todos/todosApi';
 
 import './styles.scss';
 
@@ -9,28 +10,27 @@ class TodoItem extends Component {
   }
 
   render() {
-    const { item } = this.props;
+    const { item, deleteTodo, toggleTodo } = this.props;
 
     return (
-      <Context.Consumer>
-        {({ onDelete, onToggle }) => {
-          return (
-            <li className="todo-item">
-              <div className="todo-data">
-                <input
-                  type="checkbox"
-                  checked={item.isChecked}
-                  onChange={() => onToggle(item.id)}
-                />
-                <span>{item.text}</span>
-              </div>
-              <button onClick={() => onDelete(item.id)}>close</button>
-            </li>
-          );
-        }}
-      </Context.Consumer>
+      <li className="todo-item">
+        <div className="todo-data">
+          <input
+            type="checkbox"
+            checked={item.isChecked}
+            onChange={() => toggleTodo(item.id)}
+          />
+          <span>{item.text}</span>
+        </div>
+        <button onClick={() => deleteTodo(item.id)}>close</button>
+      </li>
     );
   }
 }
 
-export default TodoItem;
+const mapDispatchToProps = {
+  deleteTodo,
+  toggleTodo,
+};
+
+export default connect(null, mapDispatchToProps)(TodoItem);

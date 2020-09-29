@@ -1,24 +1,19 @@
 {
   "todos": [
     {
-      "isChecked": true,
-      "text": "Cold Pursuit",
-      "id": 1
-    },
-    {
       "isChecked": false,
-      "text": "wave culture",
-      "id": 2
-    },
-    {
-      "isChecked": true,
       "text": "купить хлеб",
       "id": 3
     },
     {
-      "isChecked": false,
-      "text": "tiesto elements",
-      "id": 4
+      "isChecked": true,
+      "text": "Cold Pursuit",
+      "id": 5
+    },
+    {
+      "isChecked": true,
+      "text": "wave culture",
+      "id": 6
     }
   ]
 }
