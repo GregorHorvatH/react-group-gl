@@ -1,4 +1,4 @@
-import * as actions from '../redux/sessionActions';
+import * as actions from './sessionActions';
 
 export const logIn = () => (dispatch) => {
   dispatch(actions.logInSuccess());

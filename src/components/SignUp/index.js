@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import SignUpForm from '../SignUpForm';
-import { signUp } from '../../redux/sessionOperations';
+import { signUp } from '../../redux/session/sessionOperations';
 
 const SignUp = ({ onSignUp }) => (
   <div className="log-in">

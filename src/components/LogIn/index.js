@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LogInForm from '../LogInForm';
-import { logIn } from '../../redux/sessionOperations';
+import { logIn } from '../../redux/session/sessionOperations';
 
 const LogIn = ({ onLogin }) => (
   <div className="log-in">

@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import session from '../redux/sessionReducer';
+import session from './session/sessionReducer';
 
 const store = configureStore({
   reducer: {
