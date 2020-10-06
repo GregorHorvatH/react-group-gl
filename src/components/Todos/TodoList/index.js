@@ -1,10 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { memo } from 'react';
 import TodoItem from '../TodoItem';
 
 import './styles.scss';
 
-const TodoList = ({ items }) => {
+const TodoList = memo(({ items }) => {
   console.log('render todo list');
 
   return (
@@ -14,10 +13,6 @@ const TodoList = ({ items }) => {
       ))}
     </ul>
   );
-};
-
-const mapStateToProps = (state) => ({
-  items: state.todos.items.filter((item) => !item.isDone),
 });
 
-export default connect(mapStateToProps)(TodoList);
+export default TodoList;

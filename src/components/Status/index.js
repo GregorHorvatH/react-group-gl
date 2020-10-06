@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './styles.scss';
 
-const Status = ({ value, step, items }) => {
+const Status = ({ value, step, count }) => {
   console.log('render status');
 
   return (
@@ -15,7 +15,7 @@ const Status = ({ value, step, items }) => {
       <p>step: {step}</p>
 
       <h3 className="subtitle">Todos</h3>
-      <p>count: {items.length}</p>
+      <p>count: {count}</p>
     </div>
   );
 };
@@ -23,7 +23,8 @@ const Status = ({ value, step, items }) => {
 const mapStateToProps = (state) => ({
   value: state.counter.value,
   step: state.counter.step,
-  items: state.todos.items,
+  // items: state.todos.items,
+  count: state.todos.items.length,
 });
 
 export default connect(mapStateToProps)(Status);
