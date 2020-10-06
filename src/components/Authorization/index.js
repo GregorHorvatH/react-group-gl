@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logOut } from '../../redux/sessionActions';
+import { logOut } from '../../redux/session/sessionOperations';
 
 const Authorization = ({ isAuthorized, user, logOut }) => {
   return isAuthorized ? (

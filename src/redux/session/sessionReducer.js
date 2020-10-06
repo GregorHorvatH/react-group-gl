@@ -6,31 +6,54 @@ const initialState = {
   error: null,
   token: null,
   user: null,
+  isLoading: false,
+  isAuthorizing: true,
 };
 
 // ===== isAuthorized =====
 const isAuthorized = createReducer(initialState.isAuthorized, {
   [actions.logInSuccess.type]: () => true,
   [actions.signUpSuccess.type]: () => true,
-  [actions.logOut.type]: () => false,
+  [actions.logOutSuccess]: () => false,
+  [actions.logOutFailure]: () => false,
+
+  [actions.getCurrentUserSuccess]: () => true,
+  [actions.getCurrentUserFailure]: () => false,
 });
 
 // ===== error =====
 const error = createReducer(initialState.error, {});
 
 // ===== token =====
-const token = createReducer(initialState.token, {});
+const setToken = (state, action) => action.payload.token;
+
+const token = createReducer(initialState.token, {
+  [actions.logInSuccess.type]: setToken,
+});
 
 // ===== user =====
-const setUser = () => ({
-  name: 'John Doe',
-  avatar: '/img/avatar.jpeg',
-  age: 35,
-});
+const setUser = (state, action) => action.payload.user;
 
 const user = createReducer(initialState.user, {
   [actions.logInSuccess.type]: setUser,
-  [actions.logOut.type]: () => null,
+  [actions.logOutSuccess.type]: () => null,
+  [actions.logOutFailure.type]: () => null,
+
+  [actions.getCurrentUserSuccess]: (state, action) => action.payload,
+  [actions.getCurrentUserFailure]: () => null,
+});
+
+// isLoading
+const isLoading = createReducer(initialState.isLoading, {
+  [actions.logInRequest]: () => true,
+  [actions.logInSuccess]: () => false,
+  [actions.logInFailure]: () => false,
+});
+
+// isAuthorizing
+const isAuthorizing = createReducer(initialState.isAuthorizing, {
+  [actions.getCurrentUserSuccess]: () => false,
+  [actions.getCurrentUserFailure]: () => false,
 });
 
 export default combineReducers({
@@ -38,4 +61,6 @@ export default combineReducers({
   error,
   token,
   user,
+  isLoading,
+  isAuthorizing,
 });

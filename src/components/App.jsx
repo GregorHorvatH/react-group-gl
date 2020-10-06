@@ -1,25 +1,29 @@
 // core
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import Navbar from './Navbar';
 import Content from './Content';
 
-// store
-import store from '../redux/store';
+import { getCurrentUser } from '../redux/session/sessionOperations';
 
 // styles
 import './App.styles.scss';
 
-const App = () => (
-  <div className="app">
-    <BrowserRouter>
-      <Provider store={store}>
-        <Navbar />
-        <Content />
-      </Provider>
-    </BrowserRouter>
-  </div>
-);
+const App = ({ isAuthorizing, getCurrentUser }) => {
+  useEffect(getCurrentUser, []); // componentDidMount
 
-export default App;
+  return isAuthorizing ? (
+    <p>Loading...</p>
+  ) : (
+    <div className="app">
+      <Navbar />
+      <Content />
+    </div>
+  );
+};
+
+const mapStateToProps = ({ session }) => ({
+  isAuthorizing: session.isAuthorizing,
+});
+
+export default connect(mapStateToProps, { getCurrentUser })(App);
